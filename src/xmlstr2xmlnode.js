@@ -61,7 +61,7 @@ const getTraversalObj = function(xmlData, options) {
         } else if (tagType === TagType.CDATA) {
             if (options.cdataTagName) {
                 //add cdata node
-                const childNode = new xmlNode(options.cdataTagName, currentNode, tag[3]);
+                var childNode = new xmlNode(options.cdataTagName, currentNode, tag[3]);
                 childNode.attrsMap = buildAttributesMap(tag[8], options);
                 currentNode.addChild(childNode);
                 //for backtracking
@@ -78,14 +78,14 @@ const getTraversalObj = function(xmlData, options) {
                 currentNode.val = util.getValue(currentNode.val) + "" + processTagValue(tag[14], options);
             }
 
-            const childNode = new xmlNode(options.ignoreNameSpace ? tag[7] : tag[5], currentNode, "");
+            var childNode = new xmlNode(options.ignoreNameSpace ? tag[7] : tag[5], currentNode, "");
             if (tag[8] && tag[8].length > 1) {
                 tag[8] = tag[8].substr(0, tag[8].length - 1);
             }
             childNode.attrsMap = buildAttributesMap(tag[8], options);
             currentNode.addChild(childNode);
         } else {//TagType.OPENING
-            const childNode = new xmlNode(options.ignoreNameSpace ? tag[7] : tag[5], currentNode, processTagValue(tag[14], options));
+            var childNode = new xmlNode(options.ignoreNameSpace ? tag[7] : tag[5], currentNode, processTagValue(tag[14], options));
             childNode.attrsMap = buildAttributesMap(tag[8], options);
             currentNode.addChild(childNode);
             currentNode = childNode;
