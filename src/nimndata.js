@@ -52,12 +52,12 @@ const _e = function(node, e_schema, options) {
 
                 if (typeof itemSchema === "string") {
                     for (let arr_i = 0; arr_i < arr_len; arr_i++) {
-                        const r = getValue(node[arr_i].val, itemSchema);
+                        var r = getValue(node[arr_i].val, itemSchema);
                         str = processValue(str, r);
                     }
                 } else {
                     for (let arr_i = 0; arr_i < arr_len; arr_i++) {
-                        const r = _e(node[arr_i], itemSchema, options);
+                        var r = _e(node[arr_i], itemSchema, options);
                         str = processValue(str, r);
                     }
                 }
