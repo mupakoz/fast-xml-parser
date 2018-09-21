@@ -73,7 +73,7 @@ exports.validate = function(xmlData, options) {
 
                 if (attrStr[attrStr.length - 1] === "/") {//self closing tag
                     attrStr = attrStr.substring(0, attrStr.length - 1);
-                    const isValid = validateAttributeString(attrStr, options, regxAttrName);
+                    var isValid = validateAttributeString(attrStr, options, regxAttrName);
                     if (isValid === true) {
                         tagFound = true;
                         //continue; //text may presents after self closing tag
@@ -90,7 +90,7 @@ exports.validate = function(xmlData, options) {
                         }
                     }
                 } else {
-                    const isValid = validateAttributeString(attrStr, options, regxAttrName);
+                    var isValid = validateAttributeString(attrStr, options, regxAttrName);
                     if (isValid !== true) {
                         return isValid;
                     }
