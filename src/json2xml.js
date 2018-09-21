@@ -122,7 +122,7 @@ Parser.prototype.j2x = function(jObj, level) {
                     }else if(item === null){
                         val += this.indentate(level) + "<" + key + "/" + this.tagEndChar;
                     }else if (typeof item === "object") {
-                        const result = this.j2x(item, level + 1);
+                        var result = this.j2x(item, level + 1);
                         val += this.buildObjNode(result.val, key, result.attrStr, level);
                     } else {
                         val += this.buildTextNode(item, key, "", level);
@@ -137,7 +137,7 @@ Parser.prototype.j2x = function(jObj, level) {
                     attrStr += " " + Ks[j] + "=\"" + this.options.tagValueProcessor("" + jObj[key][Ks[j]]) + "\"";
                 }
             } else {
-                const result = this.j2x(jObj[key], level + 1);
+                var result = this.j2x(jObj[key], level + 1);
                 val += this.buildObjNode(result.val, key, result.attrStr, level);
             }
         }
